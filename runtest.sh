@@ -2,10 +2,11 @@
 
 make
 
-numCPUs=4
+numCPUs=`cat /proc/cpuinfo | grep processor | wc -l`
 prog=functionLocalStaticCost
 
-for mode in "global local";
+rm scaling.txt
+for mode in global local;
 do
   echo -n "$mode " >> scaling.txt
   for n in `seq $numCPUs`; 
