@@ -15,12 +15,12 @@ struct UniqueIdGenerator
 };
 
 static UniqueIdGenerator GEN;
-static int GetIdGlobal()
+__attribute__ ((noinline)) static int GetIdGlobal()
 {
   return GEN.GetNextId();
 }
 
-static int GetIdLocal()
+__attribute__ ((noinline)) static int GetIdLocal()
 {
   static UniqueIdGenerator gen;
   return gen.GetNextId();
